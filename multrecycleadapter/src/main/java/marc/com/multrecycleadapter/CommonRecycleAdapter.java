@@ -39,6 +39,10 @@ public abstract class CommonRecycleAdapter<T> extends RecyclerView.Adapter<ViewH
 		mInflater = LayoutInflater.from(mContext);
 	}
 
+	public void setmDatas(List<T> mDatas) {
+		this.mDatas = mDatas;
+	}
+
 	/**
 	 * 多布局支持
 	 * @param context

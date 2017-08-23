@@ -56,6 +56,11 @@ public class ViewHolder extends RecyclerView.ViewHolder {
 		return this;
 	}
 
+	public ViewHolder setBackgroundColor(int viewId,int color){
+		getView(viewId).setBackgroundColor(color);
+		return this;
+	}
+
 	public ViewHolder setImageByUrl(int viewId,ImageLoader loader){
 		ImageView imageView = getView(viewId);
 		if(loader == null){

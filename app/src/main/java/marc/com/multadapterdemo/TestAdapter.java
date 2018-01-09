@@ -34,6 +34,7 @@ public class TestAdapter extends CommonRecycleAdapter<String>  {
 
 	@Override
 	public void convert(ViewHolder holder, String item) {
+		mDatas.indexOf(item);
 		holder.setText(R.id.text_item,item);
 	}
 }

@@ -22,7 +22,7 @@ public abstract class CommonRecycleAdapter<T> extends RecyclerView.Adapter<ViewH
 	protected Context mContext;
 	protected LayoutInflater mInflater;
 
-	private List<T> mDatas;
+	protected List<T> mDatas;
 
 	private int mLayoutId;
 

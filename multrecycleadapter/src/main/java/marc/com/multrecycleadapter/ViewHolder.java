@@ -1,6 +1,7 @@
 package marc.com.multrecycleadapter;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;
 import android.view.View;
@@ -56,6 +57,12 @@ public class ViewHolder extends RecyclerView.ViewHolder {
 		return this;
 	}
 
+	public ViewHolder setTag(int viewId,Object tag){
+		View view = getView(viewId);
+		view.setTag(tag);
+		return this;
+	}
+
 	public ViewHolder setBackgroundColor(int viewId,int color){
 		getView(viewId).setBackgroundColor(color);
 		return this;
@@ -67,6 +74,12 @@ public class ViewHolder extends RecyclerView.ViewHolder {
 			throw new NullPointerException("ImageLoader is null!");
 		}
 		loader.displayImage(imageView.getContext(),imageView,loader.getImagePath());
+		return this;
+	}
+
+	public ViewHolder setBackground(int viewId, Drawable drawable){
+		View view = getView(viewId);
+		view.setBackground(drawable);
 		return this;
 	}
 

@@ -6,8 +6,6 @@ import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
-
 /**
  * RecyclerView.Adapter功能扩展，使它支持头部和底部的添加
  * Created by wangcd on 2018/1/22.
@@ -43,7 +41,17 @@ public class WrapRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             View footerView = mFooterViews.get(viewType);
             return createHeaderFooterViewHolder(footerView);
         }
-        return mAdapter.onCreateViewHolder(parent, viewType);
+        final int adjPosition = viewType - getHeaderCount();
+        int adapterCount = 0;
+        if(mAdapter != null){
+            adapterCount = mAdapter.getItemCount();
+            if(adjPosition < adapterCount){
+                return mAdapter.onCreateViewHolder(parent,adjPosition);
+            }
+
+        }
+//        return mAdapter.onCreateViewHolder(parent, mAdapter.getItemViewType(viewType-mHeaderViews.size()));
+        return null;
     }
 
     /**
@@ -52,6 +60,10 @@ public class WrapRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private boolean isFooterViewType(int viewType) {
         int position = mFooterViews.indexOfKey(viewType);
         return position >= 0;
+    }
+
+    private int getHeaderCount(){
+        return mHeaderViews==null?0:mHeaderViews.size();
     }
 
     /**
